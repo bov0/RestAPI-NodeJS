@@ -85,8 +85,6 @@ const actualizarReloj = async (req, res) => {
         const imagenblob = req.file ? req.file.path : null;
         const { id } = req.params;
 
-        // Cuando se suba a vercel comentar esta linea
-
         if (!modelo || modelo.trim() === "") {
             return res.status(400).json({ message: "Solicitud incorrecta, 'modelo' es obligatorio y no puede estar vacío" });
         }
@@ -114,7 +112,6 @@ const eliminarReloj = async (req, res) => {
         const { id } = req.params;
         const connection = await getConnection();
         
-        // Utiliza [0] para acceder al valor del resultado
         const buscarID = (await connection.query("SELECT COUNT (*) FROM relojes WHERE id = ?", id))[0]['COUNT (*)'];
 
         if (buscarID > 0) {
@@ -135,7 +132,7 @@ function guardarImagen(img) {
     const nombreImagen = `${prefijo}-${img.originalname}`;
     const ruta = `./static/img/${nombreImagen}`;
     fs.renameSync(img.path, ruta);
-    return ruta;
+    return nombreImagen;
 }
 
 // Ruta para manejar la subida de archivos
