@@ -1,6 +1,6 @@
 import express from "express";
 import morgan from "morgan";
-import multer from 'multer';
+//import multer from 'multer';
 // Routes
 import relojRoutes from "./routes/relojes.routes";
 import marcaRoutes from "./routes/marcas.routes";
@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Middleware para manejar formularios multipart
-app.use(upload.single('imagenblob'));
+//app.use(upload.single('imagenblob'));
 
 // Routes
 app.use("/api/relojes", relojRoutes);

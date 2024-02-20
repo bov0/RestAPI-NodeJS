@@ -1,6 +1,6 @@
 import { getConnection } from "../database/database";
-const fs = require('node:fs');
-const multer = require('multer');
+//const fs = require('node:fs');
+//const multer = require('multer');
 
 const upload = multer({ dest: './static/img' });
 
@@ -131,7 +131,7 @@ function guardarImagen(img) {
     const prefijo = Date.now();
     const nombreImagen = `${prefijo}-${img.originalname}`;
     const ruta = `./static/img/${nombreImagen}`;
-    fs.renameSync(img.path, ruta);
+    //fs.renameSync(img.path, ruta);
     return nombreImagen;
 }
 
