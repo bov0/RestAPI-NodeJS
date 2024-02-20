@@ -40,6 +40,8 @@ const agregarReloj = async (req, res) => {
         const { modelo, precio, id_marca } = req.body;
         const imagen = req.file ? req.file.originalname : null;
 
+        console.log(modelo,precio,id_marca);
+
         if (!modelo || modelo.trim() === "") {
             return res.status(400).json({ message: "Solicitud incorrecta, 'modelo' es obligatorio y no puede estar vacío" });
         }
