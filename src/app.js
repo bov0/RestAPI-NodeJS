@@ -11,8 +11,7 @@ const app = express();
 //const upload = multer({ dest: './static/img' });
 
 // Settings
-const port = process.env.PORT || 4000;
-app.set("port", port);
+app.set("port", 80);
 
 // Middlewares
 app.use(morgan("dev"));
