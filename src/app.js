@@ -8,7 +8,7 @@ import marcaRoutes from "./routes/marcas.routes";
 const app = express();
 
 // Configuración de Multer para manejar la carga de archivos y formularios multipart
-const upload = multer({ dest: './static/img' });
+//const upload = multer({ dest: './static/img' });
 
 // Settings
 const port = process.env.PORT || 4000;
