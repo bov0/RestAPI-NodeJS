@@ -136,6 +136,7 @@ function guardarImagen(img) {
 }
 
 // Ruta para manejar la subida de archivos
+/*
 const subirImagenReloj = async (req, res, next) => {
     try {
         upload.single('imagenblob')(req, res, function (err) {
@@ -151,6 +152,7 @@ const subirImagenReloj = async (req, res, next) => {
         res.status(500).send(error.message);
     }
 };
+*/
 
 export const metodos = {
     obtenerRelojes,
@@ -159,5 +161,5 @@ export const metodos = {
     eliminarReloj,
     actualizarReloj,
     obtenerRelojesOrdenados,
-    subirImagenReloj
+//    subirImagenReloj
 };
