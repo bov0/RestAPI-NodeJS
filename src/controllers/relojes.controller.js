@@ -1,8 +1,8 @@
 import { getConnection } from "../database/database";
-//const fs = require('node:fs');
-//const multer = require('multer');
+const fs = require('node:fs');
+const multer = require('multer');
 
-//const upload = multer({ dest: './static/img' });
+const upload = multer({ dest: './static/img' });
 
 const obtenerRelojes = async (req, res) => {
     try {
@@ -83,7 +83,7 @@ const actualizarReloj = async (req, res) => {
         }
 
         const imagen = req.file ? req.file.originalname : null;
-        const imagenblob = req.file ? req.file.path : null;
+        const imagenblob = req.file ? guardarImagen(req.file) : null;
         const { id } = req.params;
 
         if (!modelo || modelo.trim() === "") {
@@ -100,7 +100,7 @@ const actualizarReloj = async (req, res) => {
 
         const reloj = { modelo, precio, imagen, imagenblob, id_marca };
         const resultado = await connection.query("UPDATE relojes SET ? WHERE id = ?", [reloj, id]);
-        res.json(resultado);
+        res.json(reloj);
     } catch (error) {
         console.error(error);
         res.status(500).send(error.message);
@@ -132,12 +132,12 @@ function guardarImagen(img) {
     const prefijo = Date.now();
     const nombreImagen = `${prefijo}-${img.originalname}`;
     const ruta = `./static/img/${nombreImagen}`;
-    //fs.renameSync(img.path, ruta);
+    fs.renameSync(img.path, ruta);
     return nombreImagen;
 }
 
 // Ruta para manejar la subida de archivos
-/*
+
 const subirImagenReloj = async (req, res, next) => {
     try {
         upload.single('imagenblob')(req, res, function (err) {
@@ -153,7 +153,7 @@ const subirImagenReloj = async (req, res, next) => {
         res.status(500).send(error.message);
     }
 };
-*/
+
 
 export const metodos = {
     obtenerRelojes,
@@ -162,5 +162,5 @@ export const metodos = {
     eliminarReloj,
     actualizarReloj,
     obtenerRelojesOrdenados,
-//    subirImagenReloj
+    subirImagenReloj
 };

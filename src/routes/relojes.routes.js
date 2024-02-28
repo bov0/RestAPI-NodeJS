@@ -9,6 +9,6 @@ router.get("/:id", relojesController.obtenerReloj);
 router.post("/", relojesController.agregarReloj);
 router.put("/:id", relojesController.actualizarReloj);
 router.delete("/:id", relojesController.eliminarReloj);
-//router.post("/id", relojesController.subirImagenReloj);
+router.post("/id", relojesController.subirImagenReloj);
 
 export default router;

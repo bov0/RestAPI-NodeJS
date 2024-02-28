@@ -1,5 +1,4 @@
 import { getConnection } from "../database/database";
-const fs = require('node:fs');
 
 const obtenerMarcas = async (req, res) => {
     try {
